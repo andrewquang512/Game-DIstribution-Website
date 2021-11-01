@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Cart = () => {
+const Cart = ({ history }) => {
     return (
         <>
         </>

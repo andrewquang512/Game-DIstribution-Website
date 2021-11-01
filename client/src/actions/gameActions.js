@@ -6,9 +6,11 @@ import {
     GAME_LIST_REQUEST
 } from '../constants/gameConstants'
 
-export const gameList = () => async (dispatch) => {
+export const listAllGames = () => async (dispatch) => {
     try {
         dispatch({ type: GAME_LIST_REQUEST })
+
+        const { data } = await axios.get('/api/games') 
 
         dispatch({
             type: GAME_LIST_SUCCESS,

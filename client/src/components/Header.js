@@ -5,10 +5,10 @@ import { LinkContainer } from 'react-router-bootstrap'
 const Header = () => {
     return (
         <header>
-            <Navbar style={{ height: '60px', color: 'white' }} bg="dark" variant="dark" expand="lg">
+            <Navbar style={{ height: '80px', color: 'white' }} bg="dark" variant="dark" expand="lg">
                 <Container>
                     <LinkContainer to='/'>
-                        <Navbar.Brand>READY2PLAY</Navbar.Brand>
+                        <Navbar.Brand><span className="text-blue">READY2</span>PLAY</Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
@@ -38,15 +38,15 @@ const Header = () => {
                                 className="me-2"
                                 aria-label="Search"
                             />
-                            <Button variant="outline-success">Search</Button>
+                            <Button className="rounded-btn" variant="outline-success">Search</Button>
                         </Form>
                         <LinkContainer to="/cart">
-                            <Nav.Link>
+                            <Nav.Link className="text-blue">
                                 <i className="fas fa-shopping-cart"></i>Cart
                             </Nav.Link>
                         </LinkContainer>
                         <LinkContainer to='/login'>
-                            <Button type="button" variant="primary">Login</Button>
+                            <Button className="btn-login rounded-btn" type="button" variant="primary">Login</Button>
                             {/* <Nav.Link style={{ color: 'white' }}>Login</Nav.Link> */}
                         </LinkContainer>
                     </Navbar.Collapse>
