@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../actions/cartActions'
 
 const Game = ({ game }) => {
-    const addToCartHandler = () => {
+    const dispatch = useDispatch()
 
+    useEffect(() => {
+
+    }, [dispatch])
+
+    const addToCartHandler = (e) => {
+        e.preventDefault()
+        dispatch(addToCart(game._id))
     }
 
     return (
@@ -15,7 +24,8 @@ const Game = ({ game }) => {
                 <Card.Text style={{ color: 'black' }}>${game.price}</Card.Text>
                 <LinkContainer to='/cart'>
                     <Button disabled={game.countInStock === 0}
-                         className="rounded-btn btn-login" variant="primary">Add to cart</Button>
+                    onClick={addToCartHandler}
+                    className="rounded-btn btn-login" variant="primary">Add to cart</Button>
                 </LinkContainer>
             </Card.Body>
         </Card>
