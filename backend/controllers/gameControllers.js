@@ -6,7 +6,19 @@ const getAllGames = asyncHandler(async (req, res) => {
     res.json(games)
 })
 
+const getGameById = asyncHandler(async (req, res) => {
+    const game = await Game.findById(req.params.id)
+
+    if (game) {
+        res.json(game)
+    } else {
+        res.status(404)
+        throw new Error('No found item!')
+    }
+})
+
 
 export {
-    getAllGames
+    getAllGames,
+    getGameById
 }
