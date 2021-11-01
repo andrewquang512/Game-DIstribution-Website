@@ -27,3 +27,19 @@ main {
 .ml-auto {
   margin-left: auto
 }
+
+.btn-login {
+  background-color: #336AFF;
+}
+
+.text-blue {
+  color: #336AFF;
+}
+
+.rounded-btn {
+  border-radius: 10px;
+}
+
+.test {
+  background-color: #e3e5ea;
+}

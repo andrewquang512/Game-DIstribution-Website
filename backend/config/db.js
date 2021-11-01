@@ -4,7 +4,7 @@ const MONGO_URI = 'mongodb+srv://fxminhquan:nlmq...2001@cluster0.bgfvu.mongodb.n
 
 const connectDB = async () => {
     try {
-        const conn = await mongoose.connect(MONGO_URI, {
+        await mongoose.connect(MONGO_URI, {
             useUnifiedTopology: true,
             useNewUrlParser: true,
         })
