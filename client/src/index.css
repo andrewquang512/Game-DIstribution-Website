@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-weight: 500;
+}
+
+main {
+  min-height: 80vh;
+  background-color: #020022;
+}
+
+.ml-auto {
+  margin-left: auto
+}
+
+.btn-login {
+  background-color: #336AFF;
+}
+
+.text-blue {
+  color: #336AFF;
+}
+
+.rounded-btn {
+  border-radius: 10px;
+}
+
+.test {
+  background-color: #e3e5ea;
+}
