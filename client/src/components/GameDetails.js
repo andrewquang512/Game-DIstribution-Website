@@ -76,6 +76,7 @@ const GameDetails = ({ match }) => {
                                 <ListGroup.Item style={{ borderRadius: '10px' }}>
                                     <Button type="button"
                                         onClick={addToCartHandler}
+                                        {...game.countInStock == 0 && 'disabled'}
                                         className="btn-login rounded-btn">
                                         Add to cart
                                     </Button>

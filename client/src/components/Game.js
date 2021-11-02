@@ -22,7 +22,7 @@ const Game = ({ game }) => {
                     <Card.Title style={{ color: 'black' }}>{game.name}</Card.Title>
                 </Link>
                 <Card.Text style={{ color: 'black' }}>Publisher: {game.publisher}</Card.Text>
-                <Card.Text style={{ color: 'black' }}>Price: ${game.price}</Card.Text>
+                <Card.Text style={{ color: 'black' }}>Price: {game.price} VND</Card.Text>
             </Card.Body>
         </Card>
     )
