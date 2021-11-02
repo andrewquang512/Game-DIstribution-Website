@@ -7,7 +7,7 @@ const game_data = [
         "icon": "/images/Ori_and_the_blind_forest_icon.png",
         "countInStock": 20
     },
-    {
+    {   
         "name": "Ori and the will of the wisps",
         "price": 180000,
         "description": "The little spirit Ori is no stranger to peril, but when a fateful flight puts the owlet Ku in harm’s way, it will take more than bravery to bring a family back together, heal a broken land, and discover Ori’s true destiny. From the creators of the acclaimed action-platformer Ori and the Blind Forest comes the highly anticipated sequel. Embark on an all-new adventure in a vast world filled with new friends and foes that come to life in stunning, hand-painted artwork. Set to a fully orchestrated original score, Ori and the Will of the Wisps continues the Moon Studios tradition of tightly crafted platforming action and deeply emotional storytelling.",

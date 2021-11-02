@@ -8,7 +8,7 @@ import Cart from './components/Cart'
 import Login from './components/Login'
 import Register from './components/Register'
 import Home from './components/Home'
-import Game from './components/Game'
+import GameDetails from './components/GameDetails'
 import Profile from './components/Profile'
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
       <main className="py-3">
         <Container className='main'>
           <Route path="/cart/:id?" component={Cart} />
-          <Route path="/game/:id" component={Game} />
+          <Route path="/game/:id" component={GameDetails} />
           <Route path="/register" component={Register} />
           <Route path="/profile" component={Profile} />
           <Route path="/login" component={Login} />
