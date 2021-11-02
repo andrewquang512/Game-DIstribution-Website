@@ -7,7 +7,7 @@ const game_data = [
         "icon": "/images/Ori_and_the_blind_forest_icon.png",
         "countInStock": 20
     },
-    {
+    {   
         "name": "Ori and the will of the wisps",
         "price": 180000,
         "description": "The little spirit Ori is no stranger to peril, but when a fateful flight puts the owlet Ku in harm’s way, it will take more than bravery to bring a family back together, heal a broken land, and discover Ori’s true destiny.",

@@ -2,7 +2,7 @@ import { combineReducers, createStore, applyMiddleware } from "redux"
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import { gameListReducer } from "./reducers/gameReducers"
+import { gameListReducer, gameDetailsReducer } from "./reducers/gameReducers"
 import { cartAddReducer } from "./reducers/cartReducers"
 
 const cartItemFromStorage = localStorage.getItem('cartItems') ? 
@@ -10,6 +10,7 @@ const cartItemFromStorage = localStorage.getItem('cartItems') ?
 
 const reducer = combineReducers({
     gameList: gameListReducer,
+    gameDetails: gameDetailsReducer,
     cart: cartAddReducer
 })
 
