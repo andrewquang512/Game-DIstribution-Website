@@ -46,7 +46,7 @@ const login = asyncHandler(async (req, res) => {
 
     if (userExist) {
         res.json({
-            _id: userExist._id,
+            id: userExist._id,
             name: userExist.name,
             email: userExist.email,
             isAdmin: userExist.isAdmin

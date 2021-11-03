@@ -1,12 +1,24 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ListGroup, Row, Col, Button, Form, Image } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 
 const Cart = ({ history }) => {
+    const { user } = useSelector(state => state.userLogin)
+
     const { cartItems } = useSelector(state => state.cart)
     const dispatch = useDispatch()
+
+    const purchaseHandler = (e) => {
+        e.preventDefault()
+
+        if (!user) {
+            history.push('/login')
+        } else {
+            history.push('/checkout')
+        }
+    }
 
     useEffect(() => {
 
@@ -67,7 +79,13 @@ const Cart = ({ history }) => {
                     </ListGroup.Item>
                     <Row style={{justifyContent:'center', marginTop:'20px'}}>
                         <Col md={1}>
-                            <Button className="rounded-btn" type='button' variant='info'>Purchase</Button>
+                            <Button className="rounded-btn" 
+                                type='button' 
+                                variant='info'
+                                onClick={purchaseHandler}
+                            >
+                                Purchase
+                            </Button>
                         </Col>
                     </Row>
                 </ListGroup>

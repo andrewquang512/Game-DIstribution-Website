@@ -1,8 +1,24 @@
-import React from 'react'
-import { Navbar, Container, Nav, Form, NavDropdown, Button, FormControl } from 'react-bootstrap'
+import React, { useEffect } from 'react'
+import { Navbar, Container, Nav, Form, NavDropdown, Button, FormControl, Dropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../actions/userAction'
+
 
 const Header = () => {
+    const dispatch = useDispatch()
+    const userLogin = useSelector(state => state.userLogin)
+    const { user } = userLogin
+
+    const logoutHandler = (e) => {
+        e.preventDefault()
+
+        dispatch(logout())
+    }
+
+    useEffect(() => {
+        
+    }, [dispatch, userLogin])
     return (
         <header>
             <Navbar style={{ height: '80px', color: 'white' }} bg="dark" variant="dark" expand="lg">
@@ -45,10 +61,25 @@ const Header = () => {
                                 <i className="fas fa-shopping-cart"></i>Cart
                             </Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to='/login'>
-                            <Button className="btn-login rounded-btn" type="button" variant="primary">Login</Button>
-                            {/* <Nav.Link style={{ color: 'white' }}>Login</Nav.Link> */}
-                        </LinkContainer>
+                        {user ?
+                            (
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic"  style={{borderRadius:'10px'}}>
+                                        {user.name}
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="#/action-1">My profile</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-2">My order</Dropdown.Item>
+                                        <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>) : (
+
+                                <LinkContainer to='/login'>
+                                    <Button className="btn-login rounded-btn" type="button" variant="primary">Login</Button>
+                                    {/* <Nav.Link style={{ color: 'white' }}>Login</Nav.Link> */}
+                                </LinkContainer>
+                            )}
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
