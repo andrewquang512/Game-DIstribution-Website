@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Row, Col, Nav, Image } from 'react-bootstrap'
+import { Row, Col, Nav, Image, Card, Button, Dropdown, Form } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { listAllGames } from '../actions/gameActions'
@@ -18,7 +18,6 @@ const Home = () => {
     useEffect(() => {
 
         dispatch(listAllGames())
-
     }, [dispatch])
 
     return (
@@ -39,7 +38,66 @@ const Home = () => {
 
                         <Row>
                             <Col md={3}>
-                                test
+                                <Card className="text-center filter-main-color rounded-btn"
+                                    style={{ color: 'white', marginTop: '18px' }}
+                                >
+                                    <Card.Header>Featured</Card.Header>
+                                    <Card.Body style={{ paddingLeft: '0', paddingRight: '0' }}>
+                                        <div style={{ height: '40px', lineHeight: '40px' }} className="btn-login">
+                                            Price
+                                        </div>
+                                        <Form style={{ padding: '20px 20px 0 20px' }}>
+                                            <div key={'price-checkbox'} >
+                                                <Form.Check
+                                                    label="0 - 100000 VND"
+                                                    name="group1"
+                                                    type='checkbox'
+                                                    id="price-1"
+                                                />
+
+                                                <Form.Check
+                                                    label="100000 - 200000 VND"
+                                                    name="group1"
+                                                    type='checkbox'
+                                                    id="price-2"
+                                                />
+                                                <Form.Check
+                                                    label=">= 200000 VND"
+                                                    type='checkbox'
+                                                    id="price-3"
+                                                />
+                                            </div>
+                                        </Form>
+                                    </Card.Body>
+                                    <Card.Body style={{ paddingLeft: '0', paddingRight: '0' }}>
+                                        <div style={{ height: '40px', lineHeight: '40px' }} className="btn-login">
+                                            Category
+                                        </div>
+                                        <Form style={{ padding: '20px 20px 0 20px' }}>
+                                            {['checkbox'].map((type) => (
+                                                <div key={`inline-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        label="0 - 100000 VND"
+                                                        name="group1"
+                                                        type={type}
+                                                        id={`inline-${type}-1`}
+                                                    />
+                                                    <Form.Check
+                                                        label="100000 - 200000 VND"
+                                                        name="group1"
+                                                        type={type}
+                                                        id={`inline-${type}-2`}
+                                                    />
+                                                    <Form.Check
+                                                        label=">= 200000 VND"
+                                                        type={type}
+                                                        id={`inline-${type}-3`}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </Form>
+                                    </Card.Body>
+                                </Card>
                             </Col>
                             <Col md={9}>
                                 <Row>

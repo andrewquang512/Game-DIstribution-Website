@@ -37,7 +37,7 @@ const Cart = ({ history }) => {
                         </Row>
                     </ListGroup.Item>
                     {cartItems.map(item => (item || item.length > 0) && (
-                        <ListGroup.Item style={{ marginBottom: '10px', borderRadius: '10px', height: '80px' }}>
+                        <ListGroup.Item className="box-shadow" style={{ marginBottom: '10px', borderRadius: '10px' }}>
                             <Row className="align-items-center">
                                 <Col md={5} style={{ height: '100%', alignItems: 'center', paddingLeft: '24px' }}>
                                     <Row>
@@ -73,8 +73,8 @@ const Cart = ({ history }) => {
                     <ListGroup.Item style={{ marginBottom: '10px', borderRadius: '10px' }}>
                         <Row>
                             <Col md={7}>TOTAL</Col>
-                            <Col style={{ paddingLeft: '30px' }} md={2}>{cartItems.reduce((acc, cur) => acc + cur.quantity, 0)}</Col>
-                            <Col md={2}>{cartItems.reduce((acc, cur) => acc + cur.quantity * cur.price, 0)} VND</Col>
+                            <Col style={{ paddingLeft: '30px' }} md={2}>{cartItems.reduce((acc, cur) => acc + Number(cur.quantity), 0)}</Col>
+                            <Col md={2}>{cartItems.reduce((acc, cur) => acc + Number(cur.quantity) * Number(cur.price), 0)} VND</Col>
                         </Row>
                     </ListGroup.Item>
                     <Row style={{justifyContent:'center', marginTop:'20px'}}>

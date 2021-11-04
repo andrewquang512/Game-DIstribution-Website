@@ -24,7 +24,7 @@ const initialState = {
         cartItems: cartItemFromStorage
     },
     userLogin: {
-        user: userFromStorage
+        user: userFromStorage.name ? userFromStorage : undefined
     }
 }
 
