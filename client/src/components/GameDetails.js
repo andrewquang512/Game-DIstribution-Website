@@ -38,7 +38,7 @@ const GameDetails = ({ match }) => {
             {loading ? <Loading /> : !game ? <Loading /> : (
                 <Row className="my-3">
                     <Col lg={3}>
-                        <Image style={{ height: '250px' }} src={game.icon} rounded fluid></Image>
+                        <Image className="rounded-btn" style={{ height: '250px' }} src={game.icon} fluid></Image>
                     </Col>
                     <Col lg={6} >
                         <Card style={{ borderRadius: '10px' }}>
@@ -84,12 +84,12 @@ const GameDetails = ({ match }) => {
                             </ListGroup>
                         </Card>
                     </Col>
-                    <Col lg={3} style={{ height: '400px', overflowY: 'scroll' }}>
+                    <Col className="scrollbar" id="style-7"  lg={3} style={{ height: '500px', overflowY: 'scroll' }}>
                         {games && games.map(item => item._id !== game._id && (
                             <Row style={{ marginBottom: '20px' }}>
                                 <Col>
                                     <Link to={`/game/${item._id}`}>
-                                        <Image src={item.icon} fluid rounded></Image>
+                                        <Image className="rounded-btn hover-animation" src={item.icon} fluid></Image>
                                     </Link>
                                 </Col>
                             </Row>
