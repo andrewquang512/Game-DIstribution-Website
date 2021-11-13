@@ -6,7 +6,8 @@ const gameSchema = mongoose.Schema({
     description: { type: String },
     publisher: { type: String },
     icon: { type: String },
-    countInStock: { type: Number}
+    countInStock: { type: Number},
+    category: { type: String }
 })
 
 const Game = mongoose.model('Game', gameSchema)
