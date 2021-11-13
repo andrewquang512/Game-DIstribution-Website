@@ -36,6 +36,10 @@ main {
   color: #336AFF;
 }
 
+.text-blue2 {
+  color: #39CAF0;
+}
+
 .rounded-btn {
   border-radius: 10px !important;
 }

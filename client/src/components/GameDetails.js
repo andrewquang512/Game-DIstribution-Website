@@ -54,7 +54,7 @@ const GameDetails = ({ match }) => {
                                 <ListGroup.Item>
                                     <Row>
                                         <Col md={3}>Price:</Col>
-                                        <Col>${game.price}</Col>
+                                        <Col>{game.price} VND</Col>
                                     </Row>
                                 </ListGroup.Item>
                                 <ListGroup.Item>

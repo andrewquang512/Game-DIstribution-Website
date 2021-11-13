@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { ListGroup, Row, Col, Button, Form, Image } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ListGroup, Row, Col, Button, Form, ProgressBar } from 'react-bootstrap'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 
 const Cart = ({ history }) => {
@@ -16,7 +15,7 @@ const Cart = ({ history }) => {
         if (!user) {
             history.push('/login')
         } else {
-            history.push('/checkout')
+            history.push('/shipping')
         }
     }
 
@@ -25,7 +24,14 @@ const Cart = ({ history }) => {
     }, [dispatch])
     return (
         <Row className="justify-content-center">
-            <Col md={11} >
+            <Col md={11}>
+                <h2 className="text-center text-blue2">CART</h2>
+                <ProgressBar now={25}
+                    style={{ marginBottom: '20px', borderRadius: '8px' }}
+                    variant="info"
+                    label="25%"
+                    animated />
+
                 <ListGroup variant="flush">
                     <ListGroup.Item style={{ marginBottom: '10px', borderRadius: '10px' }}>
                         <Row >
@@ -77,10 +83,10 @@ const Cart = ({ history }) => {
                             <Col md={2}>{cartItems.reduce((acc, cur) => acc + Number(cur.quantity) * Number(cur.price), 0)} VND</Col>
                         </Row>
                     </ListGroup.Item>
-                    <Row style={{justifyContent:'center', marginTop:'20px'}}>
+                    <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
                         <Col md={1}>
-                            <Button className="rounded-btn" 
-                                type='button' 
+                            <Button className="rounded-btn"
+                                type='button'
                                 variant='info'
                                 onClick={purchaseHandler}
                             >
