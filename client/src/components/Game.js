@@ -17,7 +17,7 @@ const Game = ({ game }) => {
     >
       <Link to={`/game/${game._id}`}>
         <Image
-          className='hover-animation rounded-topLR'
+          className='hover-animation rounded-btn'
           style={{ height: '160px', width: '100%' }}
           variant='top'
           src={game.icon}

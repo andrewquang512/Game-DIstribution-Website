@@ -21,7 +21,6 @@ const Login = ({ history }) => {
 
         dispatch(login(email, password))
     }
-    console.log(userLogin)
     useEffect(() => {
         console.log(12)
         if (userLogin.user) {
