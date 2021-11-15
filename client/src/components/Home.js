@@ -77,19 +77,29 @@ const Home = () => {
                                             {['checkbox'].map((type) => (
                                                 <div key={`inline-${type}`} className="mb-3">
                                                     <Form.Check
-                                                        label="0 - 100000 VND"
+                                                        label="Adventure"
                                                         name="group1"
                                                         type={type}
                                                         id={`inline-${type}-1`}
                                                     />
                                                     <Form.Check
-                                                        label="100000 - 200000 VND"
+                                                        label="Survival, Multiplayer"
                                                         name="group1"
                                                         type={type}
                                                         id={`inline-${type}-2`}
                                                     />
                                                     <Form.Check
-                                                        label=">= 200000 VND"
+                                                        label="Strategy"
+                                                        type={type}
+                                                        id={`inline-${type}-3`}
+                                                    />
+                                                    <Form.Check
+                                                        label="Puzlle"
+                                                        type={type}
+                                                        id={`inline-${type}-3`}
+                                                    />
+                                                    <Form.Check
+                                                        label="Action"
                                                         type={type}
                                                         id={`inline-${type}-3`}
                                                     />
