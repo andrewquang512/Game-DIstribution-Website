@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Form, ProgressBar, Button, Toast } from 'react-bootstrap'
-
+import { saveShippingInfo } from '../actions/cartActions'
 
 const ShippingAddress = ({ history }) => {
+    const dispatch = useDispatch()
+
     const [address, setAddress] = useState('')
     const [district, setDistrict] = useState('')
     const [province, setProvince] = useState('')
@@ -11,8 +13,9 @@ const ShippingAddress = ({ history }) => {
     const [phoneNumber, setPhoneNumber] = useState('')
 
     const [showA, setShowA] = useState(false);
-
     const toggleShowA = () => setShowA(!showA);
+
+    const cart = useSelector(state => state.cart)
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -20,6 +23,13 @@ const ShippingAddress = ({ history }) => {
         if (!address || !district || !province || !country || !phoneNumber) {
             setShowA(true)
         } else {
+            dispatch(saveShippingInfo({
+                address,
+                district,
+                province,
+                country,
+                phoneNumber
+            }))
             history.push('/payment')
         }
     }

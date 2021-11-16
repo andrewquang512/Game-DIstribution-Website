@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ListGroup, Row, Col, Button, Form, ProgressBar } from 'react-bootstrap'
 import { addToCart, removeFromCart } from '../actions/cartActions'
@@ -85,13 +85,24 @@ const Cart = ({ history }) => {
                     </ListGroup.Item>
                     <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
                         <Col md={1}>
-                            <Button className="rounded-btn"
-                                type='button'
-                                variant='info'
-                                onClick={purchaseHandler}
-                            >
-                                Purchase
-                            </Button>
+                            {cartItems.length == 0 ? (
+                                <Button className="rounded-btn"
+                                    type='button'
+                                    variant='info'
+                                    disabled
+                                >
+                                    Continue
+                                </Button>
+                            ) : (
+                                <Button className="rounded-btn"
+                                    type='button'
+                                    variant='info'
+                                    onClick={purchaseHandler}
+                                >
+                                    Continue
+                                </Button>
+                            )}
+
                         </Col>
                     </Row>
                 </ListGroup>
