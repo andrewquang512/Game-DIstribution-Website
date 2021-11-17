@@ -2,7 +2,8 @@ import {
     CART_ADD_ITEM, 
     CART_REMOVE_ITEM, 
     SAVE_SHIPPING_INFO_SUCCESS,
-    SAVE_PAYMENT_METHOD_SUCCESS 
+    SAVE_PAYMENT_METHOD_SUCCESS, 
+    CART_REMOVE_ALL_ITEMS
 } from "../constants/cartConstants"
 
 export const cartAddReducer = (state = { cartItems: [] }, action) => {
@@ -30,6 +31,11 @@ export const cartAddReducer = (state = { cartItems: [] }, action) => {
             return {
                 ...state,
                 cartItems: state.cartItems.filter(x => x.id != item1.id)
+            }
+        case CART_REMOVE_ALL_ITEMS:
+            return {
+                ...state,
+                cartItems: []
             }
         case SAVE_SHIPPING_INFO_SUCCESS:
             return {

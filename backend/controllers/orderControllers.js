@@ -9,7 +9,8 @@ const createNewOrder = asyncHandler(async (req, res) => {
         paymentMethod,
         shippingPrices,
         orderPrices,
-        totalPrices
+        totalPrices,
+        isPaid
     } = req.body
 
     if (orderItems && orderItems.length === 0) {
@@ -23,13 +24,23 @@ const createNewOrder = asyncHandler(async (req, res) => {
             paymentMethod,
             shippingPrices,
             orderPrices,
-            totalPrices
+            totalPrices,
+            isPaid
         })
 
         res.json(order)
     } 
 })
 
+const getAllOrders = asyncHandler(async (req, res) => {
+    const id = req.body.id
+
+    const allOrders = await Order.find({ user: id })
+
+    res.json(allOrders)
+})
+
 export {
-    createNewOrder
+    createNewOrder,
+    getAllOrders
 }
