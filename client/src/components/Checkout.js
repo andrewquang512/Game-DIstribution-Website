@@ -1,30 +1,44 @@
 import React, { useState } from 'react'
 import { ListGroup, Form, Row, Col, ProgressBar, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { savePaymentMethod } from '../actions/cartActions'
+import { savePaymentMethod, removeAllItemsInCart } from '../actions/cartActions'
+import { placeOrder } from '../actions/orderActions'
+import { PayPalButton } from "react-paypal-button-v2"
+import Message from '../components/Message'
 
 const PaymentMethod = ({ history }) => {
     const dispatch = useDispatch()
+    const [isPaid, setIsPaid] = useState(false)
+
     const cart = useSelector(state => state.cart)
+    const { user } = useSelector(state => state.userLogin)
     const { shippingAddress, cartItems } = cart
+
     cart.orderPrices = Number(cartItems.reduce((acc, cur) => acc + cur.quantity * cur.price, 0))
     cart.shippingPrices = Number(cart.orderPrices > 300000 ? 0 : cart.orderPrices * 0.15)
     cart.totalPrices = Number(cart.orderPrices + cart.shippingPrices)
+
+    const backToHomeHandler = () => {
+        dispatch(removeAllItemsInCart())
+        history.push('/')
+    }
+
+    
     return (
         <>
             <Row className="justify-content-center">
                 <Col md={6}>
                     <h2 className="text-center text-blue2"
                     >CHECK ALL INFORMATION</h2>
-                    <ProgressBar now={99}
+                    <ProgressBar now={isPaid ? 100 : 99}
                         style={{ marginBottom: '20px', borderRadius: '8px' }}
                         variant="info"
-                        label="99%"
+                        label={isPaid ? "100%" : "99%"}
                         animated />
                 </Col >
             </Row >
             <Row>
-                <Col md={8}>
+                <Col md={6} lg={8} xs={12} sm={12}>
                     <ListGroup variant="flush">
                         <ListGroup.Item
                             style={{ borderTopLeftRadius: '8px', borderTopRightRadius: '8px' }}>
@@ -36,7 +50,11 @@ const PaymentMethod = ({ history }) => {
 
                         <ListGroup.Item>
                             <h2>PAYMENT METHOD</h2>
-                            {cart.paymentMethod}
+                            {isPaid ? (
+                                <Message mess={`The order is paid!`} variant="success"></Message>
+                            ) : (
+                                <Message mess="No paid!"></Message>
+                            )}
                         </ListGroup.Item>
 
                         <ListGroup.Item
@@ -56,11 +74,10 @@ const PaymentMethod = ({ history }) => {
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
-                <Col md={4}>
+                <Col md={6} lg={4} xs={12} sm={12}>
                     <ListGroup variant="flush">
                         <ListGroup.Item
                             style={{ borderTopLeftRadius: '8px', borderTopRightRadius: '8px' }}>
-
                             <h2>SUMMARY</h2>
                         </ListGroup.Item>
                         <ListGroup.Item>
@@ -83,10 +100,44 @@ const PaymentMethod = ({ history }) => {
                         </ListGroup.Item>
                         <ListGroup.Item
                             style={{ borderBottomLeftRadius: '8px', borderBottomRightRadius: '8px' }}>
-                            <Button
-                                type="button"
-                                className="rounded-btn"
-                                variant="info">Place Order</Button>
+                            {isPaid ? (
+                                <>
+                                    <Message mess="The order is paid!" variant="success"></Message>
+                                    <Button
+                                        type="button"
+                                        className="rounded-btn"
+                                        variant="info"
+                                        onClick={backToHomeHandler}
+                                        >Go Back Home</Button>
+                                </>
+                            ) : (
+                                <PayPalButton
+                                    amount="0.01"
+                                    // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+                                    onSuccess={
+                                        (details, data) => {
+                                            alert("Transaction completed by " + user.name);
+                                            setIsPaid(true)
+                                            dispatch(placeOrder({
+                                                shippingAddress:cart.shippingAddress,
+                                                orderPrices: cart.orderPrices,
+                                                totalPrices: cart.totalPrices,
+                                                paymentMethod: cart.paymentMethod,
+                                                isPaid,
+                                                orderItems: cart.cartItems,
+                                                id: user.id
+                                            }
+                                            ))
+                                            // OPTIONAL: Call your server to save the transaction
+                                            return fetch("/paypal-transaction-complete", {
+                                                method: "post",
+                                                body: JSON.stringify({
+                                                    orderID: data.orderID
+                                                })
+                                            });
+                                        }}
+                                />
+                            )}
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>

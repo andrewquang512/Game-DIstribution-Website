@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Navbar, Container, Nav, Form, NavDropdown, Button, FormControl, Dropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../actions/userAction'
 
@@ -17,7 +18,7 @@ const Header = () => {
     }
 
     useEffect(() => {
-        
+
     }, [dispatch, userLogin])
     return (
         <header>
@@ -64,13 +65,15 @@ const Header = () => {
                         {user ?
                             (
                                 <Dropdown>
-                                    <Dropdown.Toggle variant="success" id="dropdown-basic"  style={{borderRadius:'10px'}}>
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic" style={{ borderRadius: '10px' }}>
                                         {user.name}
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>
                                         <Dropdown.Item href="#/action-1">My profile</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">My order</Dropdown.Item>
+                                        <LinkContainer to="/myorder">
+                                            <Dropdown.Item>My order</Dropdown.Item>
+                                        </LinkContainer>
                                         <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>) : (

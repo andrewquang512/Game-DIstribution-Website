@@ -14,11 +14,6 @@ const orderSchema = mongoose.Schema(
                 icon: { type: String, required: true },
                 price: { type: Number, required: true },
                 publisher: { type: String, require: true},
-                product: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    required: true,
-                    ref: 'Game',
-                },
             },
         ],
         shippingAddress: {

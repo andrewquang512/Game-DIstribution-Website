@@ -2,6 +2,7 @@ import axios from 'axios'
 import {
     CART_ADD_ITEM,
     CART_REMOVE_ITEM,
+    CART_REMOVE_ALL_ITEMS,
     SAVE_SHIPPING_INFO_SUCCESS,
     SAVE_PAYMENT_METHOD_SUCCESS
 } from "../constants/cartConstants"
@@ -39,6 +40,15 @@ export const removeFromCart = (id) => async (dispatch) => {
     localStorage.setItem('cartItems', JSON.stringify(store.getState().cart.cartItems))
 }
 
+export const removeAllItemsInCart = () => async (dispatch) => {
+    dispatch({
+        type: CART_REMOVE_ALL_ITEMS,
+        payload: []
+    })
+
+    localStorage.setItem('cartItems', JSON.stringify([]))
+}
+
 export const saveShippingInfo = (data) => async (dispatch) => {
     dispatch({
         type: SAVE_SHIPPING_INFO_SUCCESS,
@@ -56,3 +66,4 @@ export const savePaymentMethod = (pm) => async (dispatch) => {
 
     localStorage.setItem('paymentMethod', JSON.stringify(pm))
 }
+

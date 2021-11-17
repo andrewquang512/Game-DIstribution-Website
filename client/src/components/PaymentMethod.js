@@ -31,12 +31,6 @@ const PaymentMethod = ({ history }) => {
                             value="paypal"
                             id="test"
                         />
-                        <Form.Check
-                            type='radio'
-                            label="Ship Code"
-                            value="ship-code"
-                            id="test"
-                        />
                     </div>
                     <Button type="submit"
                         variant="info"
