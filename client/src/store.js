@@ -2,7 +2,7 @@ import { combineReducers, createStore, applyMiddleware } from "redux"
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import { gameListReducer, gameDetailsReducer } from "./reducers/gameReducers"
+import { gameListReducer, gameDetailsReducer, listGameFilterReducer } from "./reducers/gameReducers"
 import { cartAddReducer } from "./reducers/cartReducers"
 import { userLoginReducer, userRegisterReducer } from "./reducers/userReducer"
 import { placeOrderReducer, listAllOrdersReducer } from "./reducers/orderReducers"
@@ -19,6 +19,7 @@ const paymentMethodFromStore = localStorage.getItem('paymentMethod') ?
 
 const reducer = combineReducers({
     gameList: gameListReducer,
+    listGameFilter: listGameFilterReducer,
     gameDetails: gameDetailsReducer,
     cart: cartAddReducer,
     userLogin: userLoginReducer,

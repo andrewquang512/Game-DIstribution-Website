@@ -48,24 +48,31 @@ const Home = () => {
                                         </div>
                                         <Form style={{ padding: '20px 20px 0 20px' }}>
                                             <div key={'price-checkbox'} >
-                                                <Form.Check
-                                                    label="0 - 100000 VND"
-                                                    name="group1"
-                                                    type='checkbox'
-                                                    id="price-1"
-                                                />
+                                                <LinkContainer to="/filter?price=0-100">
+                                                    <Form.Check
+                                                        label="0 - 100000 VND"
+                                                        name="group1"
+                                                        type='checkbox'
+                                                        id="price-1"
+                                                    />
+                                                </LinkContainer>
 
-                                                <Form.Check
-                                                    label="100000 - 200000 VND"
-                                                    name="group1"
-                                                    type='checkbox'
-                                                    id="price-2"
-                                                />
-                                                <Form.Check
-                                                    label=">= 200000 VND"
-                                                    type='checkbox'
-                                                    id="price-3"
-                                                />
+                                                <LinkContainer to="/filter?price=100-200">
+                                                    <Form.Check
+                                                        label="100000 - 200000 VND"
+                                                        name="group1"
+                                                        type='checkbox'
+                                                        id="price-2"
+                                                    />
+                                                </LinkContainer>
+
+                                                <LinkContainer to="/filter?price=200+">
+                                                    <Form.Check
+                                                        label=">= 200000 VND"
+                                                        type='checkbox'
+                                                        id="price-3"
+                                                    />
+                                                </LinkContainer>
                                             </div>
                                         </Form>
                                     </Card.Body>
@@ -76,33 +83,39 @@ const Home = () => {
                                         <Form style={{ padding: '20px 20px 0 20px' }}>
                                             {['checkbox'].map((type) => (
                                                 <div key={`inline-${type}`} className="mb-3">
-                                                    <Form.Check
-                                                        label="Adventure"
-                                                        name="group1"
-                                                        type={type}
-                                                        id={`inline-${type}-1`}
-                                                    />
-                                                    <Form.Check
-                                                        label="Survival, Multiplayer"
-                                                        name="group1"
-                                                        type={type}
-                                                        id={`inline-${type}-2`}
-                                                    />
-                                                    <Form.Check
-                                                        label="Strategy"
-                                                        type={type}
-                                                        id={`inline-${type}-3`}
-                                                    />
-                                                    <Form.Check
-                                                        label="Puzlle"
-                                                        type={type}
-                                                        id={`inline-${type}-3`}
-                                                    />
-                                                    <Form.Check
-                                                        label="Action"
-                                                        type={type}
-                                                        id={`inline-${type}-3`}
-                                                    />
+                                                    <LinkContainer to="/filter?category=adventure">
+                                                        <Form.Check
+                                                            label="Adventure"
+                                                            name="group1"
+                                                            type={type}
+                                                            id={`inline-${type}-1`}
+                                                        />
+                                                    </LinkContainer>
+
+                                                    <LinkContainer to="/filter?category=survival">
+                                                        <Form.Check
+                                                            label="Survival"
+                                                            name="group1"
+                                                            type={type}
+                                                            id={`inline-${type}-2`}
+                                                        />
+                                                    </LinkContainer>
+
+                                                    <LinkContainer to="/filter?category=strategy">
+                                                        <Form.Check
+                                                            label="Strategy"
+                                                            type={type}
+                                                            id={`inline-${type}-3`}
+                                                        />
+                                                    </LinkContainer>
+
+                                                    <LinkContainer to="/filter?category=puzlle">
+                                                        <Form.Check
+                                                            label="Puzlle"
+                                                            type={type}
+                                                            id={`inline-${type}-3`}
+                                                        />
+                                                    </LinkContainer>
                                                 </div>
                                             ))}
                                         </Form>

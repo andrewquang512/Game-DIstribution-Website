@@ -7,12 +7,9 @@ import {
     GAME_DETAILS_REQUEST,
     GAME_DETAILS_SUCCESS,
     GAME_DETAILS_FAIL,
-    GAME_LIST_PRICE1_REQUEST,
-    GAME_LIST_PRICE1_SUCCESS,
-    GAME_LIST_PRICE1_FAIL,
-    GAME_LIST_PRICE2_REQUEST,
-    GAME_LIST_PRICE2_SUCCESS,
-    GAME_LIST_PRICE2_FAIL
+    LIST_GAME_FILTER_REQUEST,
+    LIST_GAME_FILTER_SUCCESS,
+    LIST_GAME_FILTER_FAIL
 } from '../constants/gameConstants'
 
 export const listAllGames = () => async (dispatch) => {
@@ -48,6 +45,42 @@ export const listGameDetails = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: GAME_DETAILS_FAIL,
+            error: error.response && error.response.data.message ?
+                error.response.data.message : error.message
+        })
+    }
+}
+
+export const listGameFilterAction = (search) => async (dispatch) => {
+    try {
+        dispatch({ type: LIST_GAME_FILTER_REQUEST })
+
+        const nameFilter = search.split('=')[0]
+        const range = search.split('=')[1]
+        
+        if (nameFilter == 'price') {
+            const { data } = await axios.post('/api/games/price', {
+                range
+            })
+
+            dispatch({
+                type: LIST_GAME_FILTER_SUCCESS,
+                payload: data
+            })
+        } else {
+            const { data } = await axios.post('/api/games/category', {
+                range
+            })
+
+            dispatch({
+                type: LIST_GAME_FILTER_SUCCESS,
+                payload: data
+            })
+        } 
+          
+    } catch (error) {
+        dispatch({
+            type: LIST_GAME_FILTER_FAIL,
             error: error.response && error.response.data.message ?
                 error.response.data.message : error.message
         })
