@@ -14,6 +14,7 @@ import ShippingAddress from './components/ShippingAddress'
 import PaymentMethod from './components/PaymentMethod'
 import Checkout from './components/Checkout'
 import MyOrder from './components/MyOrder'
+import FilterGame from './components/FilterGame'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       <Header />
       <main className="py-3">
         <Container className='main'>
+          <Route path="/filter" component={FilterGame} />
           <Route path="/myorder" component={MyOrder} />
           <Route path="/checkout" component={Checkout} />
           <Route path="/payment" component={PaymentMethod} />

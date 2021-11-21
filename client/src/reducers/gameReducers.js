@@ -4,7 +4,10 @@ import {
     GAME_LIST_FAIL,
     GAME_DETAILS_REQUEST,
     GAME_DETAILS_SUCCESS,
-    GAME_DETAILS_FAIL
+    GAME_DETAILS_FAIL,
+    LIST_GAME_FILTER_REQUEST,
+    LIST_GAME_FILTER_SUCCESS,
+    LIST_GAME_FILTER_FAIL
 } from "../constants/gameConstants"
 
 export const gameListReducer = (state = {}, action) => {
@@ -42,5 +45,24 @@ export const gameDetailsReducer = (state = {}, action) => {
             }
         default:
             return state
+    }
+}
+
+export const listGameFilterReducer = (state = {}, action) => {
+    switch (action.type) {
+        case LIST_GAME_FILTER_REQUEST:
+            return { loading: true }
+        case LIST_GAME_FILTER_SUCCESS:
+            return {
+                loading: false,
+                gameFilter: action.payload
+            } 
+        case LIST_GAME_FILTER_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state 
     }
 }
