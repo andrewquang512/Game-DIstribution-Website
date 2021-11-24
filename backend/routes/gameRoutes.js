@@ -1,5 +1,6 @@
 import express from 'express'
 import { 
+    uploadGames,
     getAllGames,
     getGameById,
     listGameByPrice,
@@ -13,5 +14,5 @@ router.post('/category', listGameByCategory)
 
 router.get('/:id', getGameById)
 router.get('/', getAllGames)
-
+router.post('/', uploadGames)
 export default router

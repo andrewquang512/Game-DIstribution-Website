@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navbar, Container, Nav, Form, NavDropdown, Button, FormControl, Dropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from 'react-router-dom'
@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../actions/userAction'
 
 
-const Header = () => {
+const Header = ({ history }) => {
+    const [searchValue, setSearchValue] = useState('')
     const dispatch = useDispatch()
     const userLogin = useSelector(state => state.userLogin)
     const { user } = userLogin
@@ -15,6 +16,9 @@ const Header = () => {
         e.preventDefault()
 
         dispatch(logout())
+    }
+    const searchHandler = () => {
+        history.push(`/search?q=${searchValue}`)
     }
 
     useEffect(() => {
@@ -49,13 +53,14 @@ const Header = () => {
                             </Nav.Link> */}
                         </Nav>
                         <Form className="d-flex">
-                            <FormControl
-                                type="search"
+                            <Form.Control
+                                type="text"
                                 placeholder="Search"
                                 className="me-2"
                                 aria-label="Search"
+                                onInput={(e) => setSearchValue(e.target.value)}
                             />
-                            <Button className="rounded-btn" variant="outline-success">Search</Button>
+                            <Button onClick={searchHandler} className="rounded-btn" variant="outline-success">Search</Button>
                         </Form>
                         <LinkContainer to="/cart">
                             <Nav.Link className="text-blue">
