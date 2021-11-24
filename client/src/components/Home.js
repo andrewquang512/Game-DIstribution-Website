@@ -8,15 +8,17 @@ import Loading from './Loading'
 import Message from './Message'
 import Game from './Game'
 
-const Home = () => {
+const Home = ({ history }) => {
     const dispatch = useDispatch()
 
     const gameList = useSelector(state => state.gameList)
-
+    const userLogin = useSelector(state => state.userLogin)
     const { error, loading, games } = gameList
 
     useEffect(() => {
-
+        if (userLogin && userLogin.user && userLogin.user.isProvider) {
+            history.push('/provider')
+        }
         dispatch(listAllGames())
     }, [dispatch])
 

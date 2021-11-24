@@ -20,6 +20,10 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    isProvider: {
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps: true,

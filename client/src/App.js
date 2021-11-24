@@ -15,6 +15,8 @@ import PaymentMethod from './components/PaymentMethod'
 import Checkout from './components/Checkout'
 import MyOrder from './components/MyOrder'
 import FilterGame from './components/FilterGame'
+import Provider from './components/Provider'
+import ProviderUpload from './components/ProviderUpload'
 
 const App = () => {
   return (
@@ -30,7 +32,9 @@ const App = () => {
           <Route path="/cart/:id?" component={Cart} />
           <Route path="/game/:id" component={GameDetails} />
           <Route path="/register" component={Register} />
+          <Route path="/provider/upload" component={ProviderUpload} exact/>
           <Route path="/profile" component={Profile} />
+          <Route path="/provider" component={Provider} exact/>
           <Route path="/login" component={Login} />
           <Route path="/" component={Home} exact />
         </Container>

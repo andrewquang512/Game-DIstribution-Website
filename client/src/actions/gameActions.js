@@ -9,7 +9,10 @@ import {
     GAME_DETAILS_FAIL,
     LIST_GAME_FILTER_REQUEST,
     LIST_GAME_FILTER_SUCCESS,
-    LIST_GAME_FILTER_FAIL
+    LIST_GAME_FILTER_FAIL,
+    UPLOAD_GAME_REQUEST,
+    UPLOAD_GAME_SUCCESS,
+    UPLOAD_GAME_FAIL
 } from '../constants/gameConstants'
 
 export const listAllGames = () => async (dispatch) => {
@@ -26,7 +29,7 @@ export const listAllGames = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: GAME_LIST_FAIL,
-            error: error.response && error.response.data.message ?
+            payload: error.response && error.response.data.message ?
                 error.response.data.message : error.message
         })
     }
@@ -45,7 +48,7 @@ export const listGameDetails = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: GAME_DETAILS_FAIL,
-            error: error.response && error.response.data.message ?
+            payload: error.response && error.response.data.message ?
                 error.response.data.message : error.message
         })
     }
@@ -57,7 +60,7 @@ export const listGameFilterAction = (search) => async (dispatch) => {
 
         const nameFilter = search.split('=')[0]
         const range = search.split('=')[1]
-        
+
         if (nameFilter == 'price') {
             const { data } = await axios.post('/api/games/price', {
                 range
@@ -76,13 +79,41 @@ export const listGameFilterAction = (search) => async (dispatch) => {
                 type: LIST_GAME_FILTER_SUCCESS,
                 payload: data
             })
-        } 
-          
+        }
+
     } catch (error) {
         dispatch({
             type: LIST_GAME_FILTER_FAIL,
-            error: error.response && error.response.data.message ?
+            payload: error.response && error.response.data.message ?
                 error.response.data.message : error.message
         })
     }
 }
+
+export const uploadGameToServer = ({ name, price, description,
+    publisher, icon, countInStock, category }) => async (dispatch) => {
+        try {
+            dispatch({ type: UPLOAD_GAME_REQUEST })
+
+            const { data } = await axios.post('/api/games', {
+                name,
+                price,
+                description,
+                publisher,
+                icon,
+                countInStock,
+                category
+            })
+
+            dispatch({
+                type: UPLOAD_GAME_SUCCESS,
+                payload: data
+            })
+        } catch (error) {
+            dispatch({
+                type: UPLOAD_GAME_FAIL,
+                payload: error.response && error.response.data.message ?
+                    error.response.data.message : error.message
+            })
+        }
+    }

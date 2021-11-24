@@ -22,9 +22,9 @@ const Login = ({ history }) => {
         dispatch(login(email, password))
     }
     useEffect(() => {
-        console.log(12)
         if (userLogin.user) {
-            history.push('/')
+            if (userLogin.user.isProvider) history.push('/provider')
+            else history.push('/')
         }
     }, [dispatch, userLogin])
 

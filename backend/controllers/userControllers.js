@@ -49,7 +49,8 @@ const login = asyncHandler(async (req, res) => {
             id: userExist._id,
             name: userExist.name,
             email: userExist.email,
-            isAdmin: userExist.isAdmin
+            isAdmin: userExist.isAdmin,
+            isProvider: userExist.isProvider
         })
     } else {
         res.status(401)
