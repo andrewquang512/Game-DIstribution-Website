@@ -120,12 +120,12 @@ const PaymentMethod = ({ history }) => {
                                             setIsPaid(true)
                                             dispatch(placeOrder({
                                                 shippingAddress:cart.shippingAddress,
-                                                orderPrices: cart.orderPrices,
+                                                orderPrices: cartItems.reduce((acc, cur) => acc + cur.quantity * cur.price, 0)  ,
                                                 totalPrices: cart.totalPrices,
                                                 paymentMethod: cart.paymentMethod,
                                                 isPaid,
                                                 orderItems: cart.cartItems,
-                                                id: user.id
+                                                id: user._id
                                             }
                                             ))
                                             // OPTIONAL: Call your server to save the transaction

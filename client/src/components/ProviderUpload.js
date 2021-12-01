@@ -20,9 +20,10 @@ const ProviderUpload = () => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(uploadGameToServer({
-            name, publisher, category, description, price, countInStock, icon
-        }))
+        // dispatch(uploadGameToServer({
+        //     name, publisher, category, description, price, countInStock, icon
+        // }))
+        console.log(icon)
     }
 
     return (
@@ -92,7 +93,7 @@ const ProviderUpload = () => {
                         <Form.Control
                             style={{ borderRadius: '6px' }}
                             type="file"
-                            setIcon={e => setIcon(`/images/${e.target.value}`)} />
+                            onChange={e => setIcon("/images/" + e.target.value.split('\\')[2])} />
                     </Form.Group>
 
                     <Button

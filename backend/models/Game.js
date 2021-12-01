@@ -10,5 +10,6 @@ const gameSchema = mongoose.Schema({
     category: { type: String }
 })
 
+
 const Game = mongoose.model('Game', gameSchema)
 export default Game

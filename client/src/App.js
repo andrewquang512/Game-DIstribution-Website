@@ -17,6 +17,7 @@ import MyOrder from './components/MyOrder'
 import FilterGame from './components/FilterGame'
 import Provider from './components/Provider'
 import ProviderUpload from './components/ProviderUpload'
+import SearchGame from './components/SearchGame'
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
       <Header />
       <main className="py-3">
         <Container className='main'>
+          <Route path="/search" component={SearchGame} />
           <Route path="/filter" component={FilterGame} />
           <Route path="/myorder" component={MyOrder} />
           <Route path="/checkout" component={Checkout} />

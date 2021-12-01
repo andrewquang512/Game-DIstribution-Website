@@ -4,9 +4,11 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../actions/userAction'
+import { useHistory } from 'react-router-dom'
 
 
-const Header = ({ history }) => {
+const Header = () => {
+    const history = useHistory()
     const [searchValue, setSearchValue] = useState('')
     const dispatch = useDispatch()
     const userLogin = useSelector(state => state.userLogin)
@@ -17,6 +19,7 @@ const Header = ({ history }) => {
 
         dispatch(logout())
     }
+
     const searchHandler = () => {
         history.push(`/search?q=${searchValue}`)
     }

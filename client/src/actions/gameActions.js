@@ -12,7 +12,10 @@ import {
     LIST_GAME_FILTER_FAIL,
     UPLOAD_GAME_REQUEST,
     UPLOAD_GAME_SUCCESS,
-    UPLOAD_GAME_FAIL
+    UPLOAD_GAME_FAIL,
+    SEARCH_GAME_REQUEST,
+    SEARCH_GAME_SUCCESS,
+    SEARCH_GAME_FAIL
 } from '../constants/gameConstants'
 
 export const listAllGames = () => async (dispatch) => {
@@ -117,3 +120,22 @@ export const uploadGameToServer = ({ name, price, description,
             })
         }
     }
+
+export const searchGameAction = (search) => async (dispatch) => {
+    try {
+        dispatch({ type: SEARCH_GAME_REQUEST })
+
+        const { data } = await axios.post('/api/games/search', { search })
+        
+        dispatch({
+            type: SEARCH_GAME_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: SEARCH_GAME_FAIL,
+            payload: error.response && error.response.data.message ?
+                error.response.data.message : error.message
+        })
+    }
+}

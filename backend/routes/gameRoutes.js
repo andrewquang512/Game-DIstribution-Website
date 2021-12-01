@@ -4,11 +4,13 @@ import {
     getAllGames,
     getGameById,
     listGameByPrice,
-    listGameByCategory     
+    listGameByCategory,
+    listGameBySearch    
 } from '../controllers/gameControllers.js'
 
 const router = express.Router()
 
+router.post('/search', listGameBySearch)
 router.post('/price', listGameByPrice)
 router.post('/category', listGameByCategory)
 

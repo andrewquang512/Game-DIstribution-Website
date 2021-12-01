@@ -1,4 +1,5 @@
 import express from 'express'
+import path from 'path'
 import gamesRoute from './routes/gameRoutes.js'
 import userRoute from './routes/userRoutes.js'
 import orderRoute from './routes/orderRoutes.js'
@@ -7,10 +8,12 @@ import { errorHandler, notFound } from './middlewares/errorHandler.js'
 
 const app = express()
 const port = 5000
+const __dirname = path.resolve()
 
 connectDB()
-
+console.log(__dirname)
 app.use(express.json())
+app.use('/static', express.static(path.join(__dirname, 'public')))
 
 app.use('/api/games', gamesRoute)
 app.use('/api/users', userRoute)

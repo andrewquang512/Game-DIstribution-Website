@@ -10,7 +10,10 @@ import {
     LIST_GAME_FILTER_FAIL,
     UPLOAD_GAME_REQUEST,
     UPLOAD_GAME_SUCCESS,
-    UPLOAD_GAME_FAIL
+    UPLOAD_GAME_FAIL,
+    SEARCH_GAME_REQUEST,
+    SEARCH_GAME_SUCCESS,
+    SEARCH_GAME_FAIL
 } from "../constants/gameConstants"
 
 export const gameListReducer = (state = {}, action) => {
@@ -80,6 +83,25 @@ export const uploadGamesReducer = (state = {}, action) => {
                 success: action.payload
             }
         case UPLOAD_GAME_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}
+
+export const searchGameReducer = (state = {}, action) => {
+    switch (action.type) {
+        case SEARCH_GAME_REQUEST:
+            return { loading: true }
+        case SEARCH_GAME_SUCCESS:
+            return {
+                loading: false,
+                searchGame: action.payload
+            }
+        case SEARCH_GAME_FAIL:
             return {
                 loading: false,
                 error: action.payload

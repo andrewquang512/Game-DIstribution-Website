@@ -11,7 +11,7 @@ const MyOrder = () => {
     const { user } = useSelector(state => state.userLogin)
     const { loading, error, orders } = useSelector(state => state.myOrders)
     useEffect(() => {
-        dispatch(listMyOrders(user.id))
+        dispatch(listMyOrders(user._id))
     }, [dispatch])
     return (
         <>
