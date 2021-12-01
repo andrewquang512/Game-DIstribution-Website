@@ -85,6 +85,16 @@ const listGameByCategory = asyncHandler(async (req, res) => {
     }
 })
 
+export const listGameBySearch = asyncHandler(async (req, res) => {
+    const searchValue = req.body.search
+    const data = await Game.find()
+
+    const result = data.filter(item => String(item.name).toLowerCase().includes(searchValue))
+    res.json(result)
+})
+
+
+
 
 export {
     getAllGames,
@@ -93,3 +103,4 @@ export {
     listGameByCategory,
     uploadGames
 }
+
