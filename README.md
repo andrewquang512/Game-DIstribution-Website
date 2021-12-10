@@ -16,7 +16,7 @@ Hiện nay tại Việt Nam, lượng các website phân phối game vẫn còn 
 ![Trang chủ 2](/Images/G_trang_chu_2.png)
 #### Thông tin game
 ![info1](/Images/G_thong_tin_game.png)
-![info2](/Images/G_thong_tin_game2.png)
+![info2](/Images/G_thong_tin_game_2.png)
 #### Giỏ hàng
 ![cart](/Images/G_cart.png)
 #### Thanh toán
@@ -29,7 +29,8 @@ Hiện nay tại Việt Nam, lượng các website phân phối game vẫn còn 
 ##### Thanh toán thành công
 ![pay_success](/Images/G_PaySuc.png)
 ### Giao diện quản trị viên
-
+![Admin1](/Images/admin.png)
+![Admin2](/Images/admin2.png)
 ### Giao diện nhà phát hành game
 ![Provider](/Images/G_Provider.png)
 #### Upload game lên hệ thống
