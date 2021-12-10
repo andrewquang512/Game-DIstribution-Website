@@ -1,4 +1,4 @@
-# Game Distribution Website
+# Game Distribution Website ![Build Status](https://github.com/andrewquang512/Game-DIstribution-Website/actions/workflows/main.yml/badge.svg)
 ## Tổng quan
 Game Digital Distribution website là một ứng dụng website giúp đưa các ấn phẩm game đến tay người dùng online mà không cần các thiết bị ghi nhớ như đĩa CD, USB, ổ cứng. Ngoài ra, ứng dụng web này cũng đóng vai trò là nơi trung gian giúp các nhà phát triển game - những người tạo ra game và muốn kinh doanh chúng, dễ dàng tiếp cận với những khách hàng đang có nhu cầu. Với các nhà phát triển game, việc đưa ấn phẩm lên các ứng dụng phân phối game là một cách quảng bá tuyệt vời nhưng chỉ tốn chi phí nhỏ.
 
@@ -46,27 +46,27 @@ MERN Stack là viết tắt cho 4 công nghệ cốt lõi tạo nên một Stack
 
 ## Hướng dẫn tải về project
 ```
-git clone https://github.com/andrewquang512/Game-DIstribution-Website.git
+$ git clone https://github.com/andrewquang512/Game-DIstribution-Website.git
 ```
 ## Tải các package cần thiết
 ### Tải các package cho client
-```
-cd client
-npm install
+```bash
+$ cd client
+$ npm install
 ```
 ### Tải các package cho backend
-```
-cd backend
-npm install
+```bash
+$ cd backend
+$ npm install
 ```
 ## Hướng dẫn chạy
 ### Chạy backend
-```
-cd backend
-npm run server
+```bash
+$ cd backend
+$ npm run server
 ```
 ### Chạy client
-```
+```bash
 cd client
 npm start
 ```
