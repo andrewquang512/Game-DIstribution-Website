@@ -31,7 +31,7 @@ const createUser = asyncHandler(async (req, res) => {
             throw new Error('Can\'t create a new user')
         } else {
             res.json({
-                _id: newUser._id,
+                id: newUser._id,
                 name: newUser.name,
                 email: newUser.email,
                 isAdmin: newUser.isAdmin,
@@ -58,9 +58,57 @@ const login = asyncHandler(async (req, res) => {
     }
 })
 
+const deleteUser = asyncHandler(async (req, res) => {
+    const id = req.params.id
+
+    const checkSuccess = await User.findByIdAndDelete(id)
+    if (checkSuccess) res.json(true)
+    else {
+        res.status(401)
+        throw new Error('Has the error while deleting!')
+    }
+})
+
+const updateInfor = asyncHandler(async (req, res) => {
+    const { id, name, email } = req.body
+
+    let user = await User.findByIdAndUpdate(id, {
+        name, email
+    })
+
+    if (user) {
+        res.json({
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
+            isProvider: user.isProvider
+        })
+    } else {
+        res.status(401)
+        throw new Error('Can\'t update information!')
+    }
+})
+
+const updatePassword = asyncHandler(async (req, res) => {
+    const { id, password } = req.body
+
+    let user = await User.findByIdAndUpdate(id, { password })
+
+    if (user) res.json(true)
+    else {
+        res.status(401)
+        throw new Error('Can\'t change password')
+    }
+})
+
 export {
     getAllUsers,
     getUserById,
     createUser,
-    login
+    deleteUser,
+    login,
+    updateInfor,
+    updatePassword
 }
+
