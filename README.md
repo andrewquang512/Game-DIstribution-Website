@@ -1,4 +1,4 @@
-# Game-DIstribution-Website
+# Game-Distribution-Website
 ## How to install
 ```
 git clone https://github.com/andrewquang512/Game-DIstribution-Website.git
