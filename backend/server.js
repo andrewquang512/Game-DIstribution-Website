@@ -5,10 +5,22 @@ import userRoute from './routes/userRoutes.js'
 import orderRoute from './routes/orderRoutes.js'
 import connectDB from './config/db.js'
 import { errorHandler, notFound } from './middlewares/errorHandler.js'
+import multer from 'multer'
 
 const app = express()
 const port = 5000
 const __dirname = path.resolve()
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  })
+   
+  var upload = multer({ storage: storage })
 
 connectDB()
 console.log(__dirname)
