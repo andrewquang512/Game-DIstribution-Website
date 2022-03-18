@@ -32,7 +32,7 @@ app.use('/api/order', orderRoute);
 app.use(notFound);
 app.use(errorHandler);
 
-app.get('/', (req, res) => res.send('Hello all!'));
+// app.get('/', (req, res) => res.send('Hello all!'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
