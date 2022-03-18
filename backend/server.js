@@ -9,7 +9,6 @@ import multer from 'multer';
 
 const app = express();
 const port = process.env.PORT || 5000;
-const __dirname = path.resolve();
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -23,7 +22,6 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 connectDB();
-console.log(__dirname);
 app.use(express.json());
 // app.use('/static', express.static(path.join(__dirname, 'public')));
 
@@ -37,9 +35,9 @@ app.use(errorHandler);
 app.get('/', (req, res) => res.send('Hello all!'));
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../../client/build')));
+  app.use(express.static(path.join(__dirname, '../client/build')));
   app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   });
 }
 
