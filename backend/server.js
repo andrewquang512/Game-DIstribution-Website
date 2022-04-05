@@ -35,9 +35,13 @@ app.use(errorHandler);
 // app.get('/', (req, res) => res.send('Hello all!'));
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-  app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  // Set static folder
+  app.use(express.static('client/build'));
+
+  // ? get('*') get anything from roots here and load to serve index.html
+  app.get('*', (req, res) => {
+    // ? __dirname get current directory
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
