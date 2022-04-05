@@ -4,7 +4,6 @@ import gamesRoute from './routes/gameRoutes.js';
 import userRoute from './routes/userRoutes.js';
 import orderRoute from './routes/orderRoutes.js';
 import connectDB from './config/db.js';
-import { errorHandler, notFound } from './middlewares/errorHandler.js';
 import multer from 'multer';
 
 const app = express();
