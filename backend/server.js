@@ -4,7 +4,6 @@ import gamesRoute from './routes/gameRoutes.js';
 import userRoute from './routes/userRoutes.js';
 import orderRoute from './routes/orderRoutes.js';
 import connectDB from './config/db.js';
-import { errorHandler, notFound } from './middlewares/errorHandler.js';
 import multer from 'multer';
 
 const app = express();
@@ -28,9 +27,6 @@ app.use(express.json());
 app.use('/api/games', gamesRoute);
 app.use('/api/users', userRoute);
 app.use('/api/order', orderRoute);
-
-app.use(notFound);
-app.use(errorHandler);
 
 // app.get('/', (req, res) => res.send('Hello all!'));
 
