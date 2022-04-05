@@ -5,7 +5,10 @@ import userRoute from './routes/userRoutes.js';
 import orderRoute from './routes/orderRoutes.js';
 import connectDB from './config/db.js';
 import multer from 'multer';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = process.env.PORT || 5000;
 
