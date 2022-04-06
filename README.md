@@ -1,4 +1,6 @@
 # Game Distribution Website ![Build Status](https://github.com/andrewquang512/Game-DIstribution-Website/actions/workflows/main.yml/badge.svg)
+## Preview: [Live Demo](https://bku-ready2play.herokuapp.com/)
+
 ## Tổng quan
 Game Digital Distribution website là một ứng dụng website giúp đưa các ấn phẩm game đến tay người dùng online mà không cần các thiết bị ghi nhớ như đĩa CD, USB, ổ cứng. Ngoài ra, ứng dụng web này cũng đóng vai trò là nơi trung gian giúp các nhà phát triển game - những người tạo ra game và muốn kinh doanh chúng, dễ dàng tiếp cận với những khách hàng đang có nhu cầu. Với các nhà phát triển game, việc đưa ấn phẩm lên các ứng dụng phân phối game là một cách quảng bá tuyệt vời nhưng chỉ tốn chi phí nhỏ.
 
